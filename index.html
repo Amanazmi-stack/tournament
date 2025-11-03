@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Fire Surhan Classic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000 url('') center/cover no-repeat fixed;
+      color: #fff; min-height: 100vh; position: relative; overflow-x: hidden;
+    }
+
+    /* Fire Animation Background */
+    .fire-bg {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(45deg, #ff1744, #ff6b6b, #ff8c00, #c2185b);
+      opacity: 0.4; z-index: -1; animation: fireWave 8s infinite linear;
+    }
+    @keyframes fireWave {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .container {
+      max-width: 540px; margin: 20px auto; background: rgba(10, 10, 25, 0.92);
+      border-radius: 30px; overflow: hidden; box-shadow: 0 0 50px rgba(255, 23, 68, 0.8),
+        0 0 100px rgba(255, 193, 7, 0.5); border: 3px solid #ff1744;
+      position: relative; animation: neonGlow 2s infinite alternate;
+    }
+    @keyframes neonGlow {
+      0% { box-shadow: 0 0 50px rgba(255, 23, 68, 0.8); }
+      100% { box-shadow: 0 0 70px rgba(255, 23, 68, 1), 0 0 120px rgba(255, 193, 7, 0.7); }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff1744, #ff6b6b, #ff8c00);
+      padding: 35px 20px; text-align: center; position: relative; overflow: hidden;
+    }
+    .header::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,0.15) 15px, rgba(255,255,255,0.15) 30px);
+      animation: stripes 12s linear infinite;
+    }
+    @keyframes stripes { 0% { transform: translate(0,0); } 100% { transform: translate(60%,60%); } }
+
+    .header h1 {
+      font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700;
+      text-shadow: 0 0 20px #ff1744, 0 0 40px #ff6b6b; position: relative; z-index: 2;
+    }
+    .organizer {
+      font-size: 18px; font-weight: 700; text-shadow: 0 0 10px #fff; margin-top: 8px;
+    }
+
+    .event-info {
+      background: rgba(0,0,0,0.6); padding: 20px; text-align: center; font-size: 16px; font-weight: 600;
+      border-bottom: 2px dashed #ff6b6b;
+    }
+
+    .prize-pool {
+      background: linear-gradient(45deg, #1a1a2e, #16213e); padding: 22px; text-align: center;
+      font-size: 22px; font-weight: 700; margin: 20px; border-radius: 18px; border: 3px solid #ffd700;
+      position: relative; overflow: hidden;
+    }
+    .prize-pool::before {
+      content: 'Trophy'; font-size: 50px; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); opacity: 0.1; pointer-events: none;
+    }
+    .prize-pool span {
+      color: #ffd700; font-size: 34px; text-shadow: 0 0 20px #ffd700; animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
+    .winner-rule {
+      background: linear-gradient(135deg, #8B0000, #B22222); padding: 16px; text-align: center;
+      font-weight: 700; font-size: 17px; border-radius: 15px; margin: 18px; border: 2px solid #ff1744;
+      box-shadow: 0 0 25px rgba(255, 23, 68, 0.7);
+    }
+
+    .whatsapp-alert {
+      background: #25D366; color: #000; padding: 16px; text-align: center; font-weight: 700;
+      font-size: 17px; border-radius: 15px; margin: 18px; box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
+    }
+    .whatsapp-alert i { color: #fff; font-style: normal; }
+
+    .countdown {
+      display: flex; justify-content: center; gap: 15px; margin: 25px 0;
+    }
+    .time-box {
+      background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px); padding: 14px;
+      border-radius: 18px; min-width: 70px; text-align: center; border: 2px solid rgba(255, 107, 107, 0.6);
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+    }
+    .time-box span { display: block; font-size: 28px; font-weight: 700; color: #ff1744; }
+    .time-label { font-size: 13px; opacity: 0.9; }
+
+    .form-section { padding: 35px; }
+    .form-group { margin-bottom: 20px; }
+    label {
+      display: block; margin-bottom: 10px; font-weight: 700; font-size: 16px;
+      text-shadow: 0 0 6px rgba(255, 107, 107, 0.6);
+    }
+    input {
+      width: 100%; padding: 16px; border: none; border-radius: 14px;
+      background: rgba(255, 255, 255, 0.95); color: #000; font-size: 17px;
+      box-shadow: 0 0 18px rgba(255, 107, 107, 0.3); transition: 0.3s;
+    }
+    input:focus {
+      outline: none; box-shadow: 0 0 0 5px rgba(255, 23, 68, 0.7); transform: scale(1.03);
+    }
+
+    /* Pay & Register Button - धाँसू! */
+    .pay-register-btn {
+      display: block; background: linear-gradient(45deg, #ff1744, #ff6b6b, #ff8c00);
+      color: white; padding: 22px; text-align: center; border-radius: 60px;
+      font-size: 24px; font-weight: 900; text-decoration: none; margin: 25px;
+      box-shadow: 0 0 30px rgba(255, 23, 68, 0.9), 0 0 60px rgba(255, 107, 107, 0.6);
+      position: relative; overflow: hidden; transition: 0.4s; text-transform: uppercase;
+      letter-spacing: 1px; animation: buttonPulse 2s infinite;
+    }
+    .pay-register-btn::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.7s;
+    }
+    .pay-register-btn:hover::before { left: 100%; }
+    .pay-register-btn:hover {
+      transform: translateY(-6px) scale(1.06); box-shadow: 0 0 50px rgba(255, 23, 68, 1);
+    }
+    @keyframes buttonPulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 23, 68, 0.9); }
+      50% { box-shadow: 0 0 50px rgba(255, 23, 68, 1), 0 0 80px rgba(255, 107, 107, 0.8); }
+    }
+
+    .footer {
+      text-align: center; padding: 25px; font-size: 15px; background: rgba(0,0,0,0.4);
+      border-top: 2px solid rgba(255, 107, 107, 0.4);
+    }
+
+    /* UPI Modal */
+    #upiModal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.97); z-index: 999; padding: 25px; text-align: center;
+      align-items: center; justify-content: center; flex-direction: column;
+    }
+    #upiModal img {
+      width: 270px; height: 270px; border: 14px solid #4CAF50; border-radius: 20px;
+      box-shadow: 0 0 40px #4CAF50; margin: 20px;
+    }
+    #utr { width: 85%; max-width: 320px; padding: 14px; margin: 15px 0; border-radius: 14px;
+      border: none; font-size: 18px; background: #fff; color: #000; }
+    #upiModal button {
+      padding: 14px 35px; background: #25D366; color: white; border: none;
+      border-radius: 60px; font-weight: 700; cursor: pointer; margin: 10px;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fire-bg"></div>
+  <div class="container">
+
+    <div class="header">
+      <h1>SURHAN eSPORTS</h1>
+      <div class="organizer">आयोजक: Aman Azmi</div>
+    </div>
+
+    <div class="event-info">
+      <p>मोड: Classic Bermuda | 48 Players | सुरहन | 10 नवंबर 2025 | 12:00 PM</p>
+    </div>
+
+    <div class="prize-pool">
+      प्राइज पूल: <span>₹2,400</span><br>
+      <small>हारा हुआ पैसा → विजेता को!</small>
+    </div>
+
+    <div class="winner-rule">
+      100% पैसे विजेता को!<br>हर प्लेयर से ₹50 → पूरा विजेता को!
+    </div>
+
+    <div class="whatsapp-alert">
+      10 नवंबर को <i>ID + PASS</i> WhatsApp पर भेजा जाएगा!
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box"><span id="days">00</span><div class="time-label">दिन</div></div>
+      <div class="time-box"><span id="hours">00</span><div class="time-label">घंटे</div></div>
+      <div class="time-box"><span id="minutes">00</span><div class="time-label">मिनट</div></div>
+      <div class="time-box"><span id="seconds">00</span><div class="time-label">सेकंड</div></div>
+    </div>
+
+    <div class="form-section">
+      <form id="registerForm">
+        <div class="form-group">
+          <label>पूरा नाम</label>
+          <input type="text" id="name" placeholder="enter your name" required />
+        </div>
+        <div class="form-group">
+          <label>मोबाइल नंबर (WhatsApp)</label>
+          <input type="tel" id="mobile" placeholder="10 अंकों का" pattern="[0-9]{10}" required />
+        </div>
+        <div class="form-group">
+          <label>इन-गेम नाम</label>
+          <input type="text" id="gameName" placeholder="FF NAME" required />
+        </div>
+        <div class="form-group">
+          <label>Free Fire UID</label>
+          <input type="text" id="uid" placeholder="123456789" required />
+        </div>
+      </form>
+    </div>
+
+    <!-- धाँसू बटन -->
+    <a href="#" id="payRegisterBtn" class="pay-register-btn">
+      Pay & Register (₹50)
+    </a>
+
+    <div class="footer">
+      <p>Surhan Esports | हारा हुआ पैसा → विजेता को!</p>
+    </div>
+  </div>
+
+  <!-- UPI Modal -->
+  <div id="upiModal">
+    <h2 style="color:#4CAF50; font-size:28px; margin-bottom:15px;">₹50 भेजें</h2>
+    <img src="IMG_20251103_204227.jpg" alt="UPI QR">
+    <p style="font-size:18px; margin:10px;"><strong>UPI ID:</strong> <code>amanazmim2025@oksbi</code></p>
+    <input type="text" id="utr" placeholder="UTR / Transaction ID">
+    <button onclick="sendToWhatsApp()">WhatsApp पर भेजें</button>
+    <button onclick="document.getElementById('upiModal').style.display='none'">बंद करें</button>
+  </div>
+
+  <script>
+    document.getElementById('payRegisterBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const gameName = document.getElementById('gameName').value.trim();
+      const uid = document.getElementById('uid').value.trim();
+
+      if (!name || !mobile || !gameName || !uid || mobile.length !== 10) {
+        alert('सभी फील्ड सही से भरें!');
+        return;
+      }
+      document.getElementById('upiModal').style.display = 'flex';
+    });
+
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value;
+      const mobile = document.getElementById('mobile').value;
+      const gameName = document.getElementById('gameName').value;
+      const uid = document.getElementById('uid').value;
+      const utr = document.getElementById('utr').value.trim();
+
+      if (!utr) { alert('UTR डालें!'); return; }
+
+      const message = `*नया रजिस्ट्रेशन + पेमेंट*%0A%0A` +
+        `नाम: ${name}%0A` +
+        `मोबाइल: ${mobile}%0A` +
+        `गेम नाम: ${gameName}%0A` +
+        `UID: ${uid}%0A` +
+        `UTR: ${utr}%0A%0A` +
+        `_10 नवंबर को ID/Pass भेजें_`;
+
+      window.open(`https://wa.me/917860959062?text=${message}`, '_blank');
+      alert('सब डेटा WhatsApp पर भेज दिया गया!');
+      document.getElementById('upiModal').style.display = 'none';
+      document.getElementById('utr').value = '';
+    }
+
+    // Countdown
+    const eventDate = new Date("2025-11-10T12:00:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "<div style='color:#ff1744; font-weight:700; font-size:20px;'>मैच शुरू!</div>";
+        return;
+      }
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000*60)) / 1000);
+      document.getElementById("days").innerText = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+    }, 1000);
+  </script>
+</body>
+</html>
