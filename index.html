@@ -1,294 +1,511 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Fire Surhan Classic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #000 url('') center/cover no-repeat fixed;
-      color: #fff; min-height: 100vh; position: relative; overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123e37">
+    <meta name="description" content="Aman Azmi's YouTube community giveaway. Register your YouTube name for the November 1 prize draw.">
+    <title>Aman Azmi | Community Giveaway</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --forest: #123e37;
+            --forest-deep: #0b2d28;
+            --mint: #dff2e8;
+            --paper: #f7f5ef;
+            --white: #fffefa;
+            --ink: #182824;
+            --muted: #67736d;
+            --line: #dfe5dd;
+            --orange: #e7794e;
+            --yellow: #f4cb63;
+            --shadow: 0 14px 36px rgba(17, 48, 40, .08);
+        }
 
-    /* Fire Animation Background */
-    .fire-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(45deg, #ff1744, #ff6b6b, #ff8c00, #c2185b);
-      opacity: 0.4; z-index: -1; animation: fireWave 8s infinite linear;
-    }
-    @keyframes fireWave {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
+        * { box-sizing: border-box; }
 
-    .container {
-      max-width: 540px; margin: 20px auto; background: rgba(10, 10, 25, 0.92);
-      border-radius: 30px; overflow: hidden; box-shadow: 0 0 50px rgba(255, 23, 68, 0.8),
-        0 0 100px rgba(255, 193, 7, 0.5); border: 3px solid #ff1744;
-      position: relative; animation: neonGlow 2s infinite alternate;
-    }
-    @keyframes neonGlow {
-      0% { box-shadow: 0 0 50px rgba(255, 23, 68, 0.8); }
-      100% { box-shadow: 0 0 70px rgba(255, 23, 68, 1), 0 0 120px rgba(255, 193, 7, 0.7); }
-    }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
 
-    .header {
-      background: linear-gradient(135deg, #ff1744, #ff6b6b, #ff8c00);
-      padding: 35px 20px; text-align: center; position: relative; overflow: hidden;
-    }
-    .header::before {
-      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,0.15) 15px, rgba(255,255,255,0.15) 30px);
-      animation: stripes 12s linear infinite;
-    }
-    @keyframes stripes { 0% { transform: translate(0,0); } 100% { transform: translate(60%,60%); } }
+        button, input { font: inherit; }
+        button { cursor: pointer; }
+        :focus-visible { outline: 3px solid #db8d57; outline-offset: 3px; }
 
-    .header h1 {
-      font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700;
-      text-shadow: 0 0 20px #ff1744, 0 0 40px #ff6b6b; position: relative; z-index: 2;
-    }
-    .organizer {
-      font-size: 18px; font-weight: 700; text-shadow: 0 0 10px #fff; margin-top: 8px;
-    }
+        .topbar {
+            min-height: 74px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 0 clamp(20px, 6vw, 88px);
+            background: var(--forest-deep);
+            color: var(--white);
+        }
 
-    .event-info {
-      background: rgba(0,0,0,0.6); padding: 20px; text-align: center; font-size: 16px; font-weight: 600;
-      border-bottom: 2px dashed #ff6b6b;
-    }
+        .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; }
+        .brand-mark { display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; color: var(--forest-deep); background: var(--yellow); font: 700 13px Georgia, serif; }
+        .brand-lockup { display: grid; gap: 2px; }
+        .brand-name { font-family: Georgia, serif; font-size: 19px; }
+        .brand-caption { color: #c5d5cd; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+        main { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
 
-    .prize-pool {
-      background: linear-gradient(45deg, #1a1a2e, #16213e); padding: 22px; text-align: center;
-      font-size: 22px; font-weight: 700; margin: 20px; border-radius: 18px; border: 3px solid #ffd700;
-      position: relative; overflow: hidden;
-    }
-    .prize-pool::before {
-      content: 'Trophy'; font-size: 50px; position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%); opacity: 0.1; pointer-events: none;
-    }
-    .prize-pool span {
-      color: #ffd700; font-size: 34px; text-shadow: 0 0 20px #ffd700; animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+        .intro {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            gap: 30px;
+            align-items: center;
+            margin: 30px 0 22px;
+            padding: clamp(27px, 5vw, 52px);
+            border-radius: 8px;
+            color: var(--white);
+            background-color: var(--forest);
+            background-image: radial-gradient(circle at 84% 22%, rgba(244,203,99,.22) 0 2px, transparent 3px), radial-gradient(circle at 88% 26%, rgba(244,203,99,.13) 0 50px, transparent 51px), linear-gradient(125deg, transparent 60%, rgba(255,255,255,.035) 60% 61%, transparent 61%);
+            background-size: 22px 22px, auto, auto;
+        }
 
-    .winner-rule {
-      background: linear-gradient(135deg, #8B0000, #B22222); padding: 16px; text-align: center;
-      font-weight: 700; font-size: 17px; border-radius: 15px; margin: 18px; border: 2px solid #ff1744;
-      box-shadow: 0 0 25px rgba(255, 23, 68, 0.7);
-    }
+        .eyebrow { margin: 0 0 12px; color: var(--yellow); font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1 { max-width: 560px; margin-bottom: 12px; font: 500 clamp(34px, 5vw, 52px)/1.04 Georgia, serif; }
+        .intro-copy { max-width: 520px; margin-bottom: 0; color: #d7e4dd; font-size: 15px; line-height: 1.65; }
 
-    .whatsapp-alert {
-      background: #25D366; color: #000; padding: 16px; text-align: center; font-weight: 700;
-      font-size: 17px; border-radius: 15px; margin: 18px; box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
-    }
-    .whatsapp-alert i { color: #fff; font-style: normal; }
+        .drop-mark { justify-self: end; width: min(190px, 100%); aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(255,255,255,.045); }
+        .drop-mark span { color: var(--yellow); font: 500 92px/1 Georgia, serif; transform: rotate(-8deg); }
 
-    .countdown {
-      display: flex; justify-content: center; gap: 15px; margin: 25px 0;
-    }
-    .time-box {
-      background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(12px); padding: 14px;
-      border-radius: 18px; min-width: 70px; text-align: center; border: 2px solid rgba(255, 107, 107, 0.6);
-      box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
-    }
-    .time-box span { display: block; font-size: 28px; font-weight: 700; color: #ff1744; }
-    .time-label { font-size: 13px; opacity: 0.9; }
+        .giveaway { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr); gap: 22px; align-items: stretch; margin-bottom: 42px; }
+        .giveaway-info, .entry-panel { border: 1px solid var(--line); border-radius: 7px; background: var(--white); box-shadow: var(--shadow); }
+        .giveaway-info { padding: 25px 27px; }
+        .section-kicker { margin: 0 0 8px; color: #a04c31; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+        .giveaway-info h2 { margin: 0 0 8px; font: 500 27px/1.15 Georgia, serif; }
+        .section-subtitle { margin: 0 0 20px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+        .countdown { display: flex; align-items: center; gap: 9px; margin-bottom: 21px; padding: 12px 14px; border-left: 3px solid var(--orange); background: #fbf0e9; }
+        .countdown-label { flex: 1; color: #6c4538; font-size: 12px; font-weight: 700; }
+        .countdown-value { color: #783c28; font: 700 17px/1.1 Consolas, monospace; font-variant-numeric: tabular-nums; }
+        .prize-list { display: grid; gap: 8px; }
+        .prize-row { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 11px; min-height: 53px; padding: 7px 11px; border-bottom: 1px solid var(--line); }
+        .prize-row:last-child { border-bottom: 0; }
+        .prize-place { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #423b25; background: #f3d87f; font: 700 12px Georgia, serif; }
+        .prize-row:nth-child(2) .prize-place { color: #46534d; background: #dfe7df; }
+        .prize-row:nth-child(3) .prize-place { color: #784e37; background: #f1d7c5; }
+        .prize-name { font-size: 13px; font-weight: 700; }
+        .prize-note { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; font-weight: 400; }
+        .prize-amount { font: 500 22px Georgia, serif; }
+        .giveaway-rules { margin: 17px 0 0; padding-left: 17px; color: var(--muted); font-size: 11px; line-height: 1.75; }
+        .entry-panel { overflow: hidden; }
+        .entry-head { padding: 22px 23px 17px; border-bottom: 1px solid var(--line); }
+        .entry-head h2 { margin: 0 0 5px; font: 500 22px Georgia, serif; }
+        .entry-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+        .entry-form { padding: 20px 23px 22px; }
+        .field-label { display: block; margin-bottom: 7px; font-size: 12px; font-weight: 700; }
+        .name-input { width: 100%; min-height: 45px; margin-bottom: 13px; border: 1px solid #cbd5ce; border-radius: 4px; padding: 0 12px; color: var(--ink); background: white; outline: none; }
+        .name-input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(18,62,55,.1); }
+        .name-input::placeholder { color: #929e96; }
+        .attestation { display: flex; align-items: flex-start; gap: 9px; margin: 5px 0 15px; color: #4e5b54; font-size: 11px; line-height: 1.5; cursor: pointer; }
+        .attestation input { flex: 0 0 auto; width: 16px; height: 16px; margin: 1px 0 0; accent-color: var(--forest); }
+        .entry-button { width: 100%; min-height: 46px; border: 0; border-radius: 4px; color: white; background: var(--forest); font-size: 13px; font-weight: 800; }
+        .entry-button:hover:not(:disabled) { background: #20584e; }
+        .entry-button:disabled { cursor: not-allowed; color: #738079; background: #e7ebe7; }
+        .entry-count { display: flex; justify-content: space-between; gap: 12px; margin-top: 15px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+        .entry-count strong { color: var(--ink); }
+        .entry-privacy { margin: 12px 0 0; color: #78847d; font-size: 10px; line-height: 1.55; }
+        .entry-success { display: none; margin-top: 14px; padding: 12px; border: 1px solid #c4ddcd; border-radius: 4px; color: var(--forest); background: #eff7f1; font-size: 12px; line-height: 1.55; }
+        .entry-success.show { display: block; }
+        .entry-success strong { display: block; margin-bottom: 3px; }
+        .codes-heading { display: flex; justify-content: space-between; align-items: end; gap: 15px; margin: 0 0 14px; }
+        .codes-heading h2 { margin: 0 0 4px; font: 500 23px Georgia, serif; }
+        .codes-heading p { margin: 0; color: var(--muted); font-size: 12px; }
+        .codes-label { flex: 0 0 auto; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+        .milestone-lock { margin-bottom: 17px; padding: 20px 23px; border: 1px solid #d7c38b; border-radius: 6px; background: #fff8e6; }
+        .milestone-lock[hidden] { display: none; }
+        .milestone-top { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 12px; }
+        .milestone-title { margin: 0; color: #57451a; font-size: 14px; font-weight: 800; }
+        .milestone-count { color: #57451a; font: 700 13px Consolas, monospace; white-space: nowrap; }
+        .milestone-track { height: 8px; overflow: hidden; border-radius: 8px; background: #eadfbd; }
+        .milestone-fill { width: 0; height: 100%; border-radius: inherit; background: var(--orange); transition: width .3s ease; }
+        .milestone-copy { margin: 10px 0 0; color: #736649; font-size: 11px; line-height: 1.55; }
+        #redeemStats[hidden], #redeemWorkspace[hidden] { display: none; }
+        .status-line[hidden] { display: none; }
 
-    .form-section { padding: 35px; }
-    .form-group { margin-bottom: 20px; }
-    label {
-      display: block; margin-bottom: 10px; font-weight: 700; font-size: 16px;
-      text-shadow: 0 0 6px rgba(255, 107, 107, 0.6);
-    }
-    input {
-      width: 100%; padding: 16px; border: none; border-radius: 14px;
-      background: rgba(255, 255, 255, 0.95); color: #000; font-size: 17px;
-      box-shadow: 0 0 18px rgba(255, 107, 107, 0.3); transition: 0.3s;
-    }
-    input:focus {
-      outline: none; box-shadow: 0 0 0 5px rgba(255, 23, 68, 0.7); transform: scale(1.03);
-    }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 7px; background: var(--white); box-shadow: var(--shadow); }
+        .stat { padding: 19px 24px; }
+        .stat + .stat { border-left: 1px solid var(--line); }
+        .stat-label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
+        .stat-value { font: 500 29px/1 Georgia, serif; }
+        .stat-value small { font: 700 12px "Segoe UI", sans-serif; color: var(--muted); }
+        .status-line { display: flex; align-items: center; gap: 7px; margin: 15px 2px 25px; color: var(--muted); font-size: 12px; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #39a66d; }
+        .status-dot.empty { background: var(--orange); }
 
-    /* Pay & Register Button - धाँसू! */
-    .pay-register-btn {
-      display: block; background: linear-gradient(45deg, #ff1744, #ff6b6b, #ff8c00);
-      color: white; padding: 22px; text-align: center; border-radius: 60px;
-      font-size: 24px; font-weight: 900; text-decoration: none; margin: 25px;
-      box-shadow: 0 0 30px rgba(255, 23, 68, 0.9), 0 0 60px rgba(255, 107, 107, 0.6);
-      position: relative; overflow: hidden; transition: 0.4s; text-transform: uppercase;
-      letter-spacing: 1px; animation: buttonPulse 2s infinite;
-    }
-    .pay-register-btn::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.7s;
-    }
-    .pay-register-btn:hover::before { left: 100%; }
-    .pay-register-btn:hover {
-      transform: translateY(-6px) scale(1.06); box-shadow: 0 0 50px rgba(255, 23, 68, 1);
-    }
-    @keyframes buttonPulse {
-      0%, 100% { box-shadow: 0 0 30px rgba(255, 23, 68, 0.9); }
-      50% { box-shadow: 0 0 50px rgba(255, 23, 68, 1), 0 0 80px rgba(255, 107, 107, 0.8); }
-    }
+        .workspace { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr); gap: 22px; align-items: start; padding-bottom: 54px; }
+        .panel { border: 1px solid var(--line); border-radius: 7px; background: var(--white); box-shadow: var(--shadow); }
+        .panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 23px 24px 18px; border-bottom: 1px solid var(--line); }
+        .panel-head h2 { margin: 0 0 5px; font: 500 23px Georgia, serif; }
+        .panel-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+        .step-tag { flex: 0 0 auto; padding: 6px 9px; border-radius: 4px; background: var(--mint); color: var(--forest); font-size: 11px; font-weight: 800; }
+        .task-list { padding: 4px 24px 18px; }
+        .task-row { display: flex; align-items: center; gap: 13px; min-height: 66px; border-bottom: 1px solid #edf0eb; cursor: pointer; }
+        .task-row:last-child { border-bottom: 0; }
+        .task-check { appearance: none; flex: 0 0 21px; width: 21px; height: 21px; margin: 0; border: 1.5px solid #aab7af; border-radius: 5px; background: white; cursor: pointer; }
+        .task-check:checked { border-color: var(--forest); background: var(--forest); }
+        .task-check:checked::after { content: "✓"; display: block; color: white; text-align: center; font-size: 15px; line-height: 18px; }
+        .task-icon { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; background: #f5e9db; color: #9a4f29; font-weight: 800; }
+        .task-row:nth-child(2) .task-icon { background: #e3f0e8; color: #276b49; }
+        .task-row:nth-child(3) .task-icon { background: #f8e4dc; color: #a84937; }
+        .task-text { flex: 1; }
+        .task-title { display: block; font-size: 14px; font-weight: 700; }
+        .task-hint { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+        .claim-wrap { padding: 0 24px 23px; }
+        .claim-button { min-height: 45px; border: 0; border-radius: 5px; padding: 0 16px; font-size: 13px; font-weight: 800; }
+        .claim-button { width: 100%; color: var(--forest-deep); background: var(--yellow); }
+        .claim-button:hover:not(:disabled) { background: #f7d77e; }
+        .claim-button:disabled { cursor: not-allowed; color: #758078; background: #e9ece7; }
+        .claim-note { margin: 11px 0 0; color: var(--muted); text-align: center; font-size: 11px; line-height: 1.5; }
+        .reward-content { padding: 20px 24px 23px; }
+        .reward-empty { padding: 14px 0 8px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+        .code-ticket { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; padding: 14px; border: 1px dashed #aac4b4; border-radius: 5px; background: #f1f8f3; }
+        .code-ticket:last-child { margin-bottom: 0; }
+        .code-value { color: var(--forest); font: 700 17px/1.2 "Consolas", monospace; letter-spacing: .04em; overflow-wrap: anywhere; }
+        .copy-button { flex: 0 0 auto; border: 1px solid #c7d8cc; border-radius: 4px; padding: 7px 9px; color: var(--forest); background: white; font-size: 11px; font-weight: 700; }
+        .copy-button:hover { background: var(--mint); }
 
-    .footer {
-      text-align: center; padding: 25px; font-size: 15px; background: rgba(0,0,0,0.4);
-      border-top: 2px solid rgba(255, 107, 107, 0.4);
-    }
+        .toast { position: fixed; right: 20px; bottom: 20px; z-index: 5; max-width: calc(100% - 40px); padding: 12px 16px; border-radius: 5px; color: white; background: var(--forest-deep); box-shadow: var(--shadow); font-size: 13px; opacity: 0; transform: translateY(8px); pointer-events: none; transition: .2s ease; }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        footer { padding: 18px 20px 28px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 11px; line-height: 1.6; }
 
-    /* UPI Modal */
-    #upiModal {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.97); z-index: 999; padding: 25px; text-align: center;
-      align-items: center; justify-content: center; flex-direction: column;
-    }
-    #upiModal img {
-      width: 270px; height: 270px; border: 14px solid #4CAF50; border-radius: 20px;
-      box-shadow: 0 0 40px #4CAF50; margin: 20px;
-    }
-    #utr { width: 85%; max-width: 320px; padding: 14px; margin: 15px 0; border-radius: 14px;
-      border: none; font-size: 18px; background: #fff; color: #000; }
-    #upiModal button {
-      padding: 14px 35px; background: #25D366; color: white; border: none;
-      border-radius: 60px; font-weight: 700; cursor: pointer; margin: 10px;
-      box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
-    }
-  </style>
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+        }
+
+        @media (max-width: 760px) {
+            .intro { grid-template-columns: 1fr 100px; gap: 15px; }
+            .drop-mark { width: 96px; }
+            .drop-mark span { font-size: 54px; }
+            .giveaway { grid-template-columns: 1fr; }
+            .workspace { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 500px) {
+            .topbar { min-height: 64px; padding: 0 17px; }
+            main { width: calc(100% - 28px); }
+            .intro { margin-top: 17px; padding: 25px 20px; grid-template-columns: 1fr; }
+            .intro-copy { font-size: 13px; }
+            .drop-mark { display: none; }
+            .giveaway-info { padding: 21px 18px; }
+            .entry-head, .entry-form { padding-right: 17px; padding-left: 17px; }
+            .countdown { align-items: flex-start; flex-direction: column; gap: 5px; }
+            .codes-heading { align-items: flex-start; flex-direction: column; }
+            .stats { grid-template-columns: repeat(3, 1fr); }
+            .stat { padding: 15px 10px; }
+            .stat-label { min-height: 29px; font-size: 10px; }
+            .stat-value { font-size: 25px; }
+            .panel-head { padding: 19px 17px 15px; }
+            .task-list { padding-right: 17px; padding-left: 17px; }
+            .claim-wrap, .reward-content { padding-right: 17px; padding-left: 17px; }
+        }
+    </style>
 </head>
 <body>
+    <header class="topbar">
+        <div class="brand" aria-label="Aman Azmi, YouTube creator"><span class="brand-mark" aria-hidden="true">AA</span><span class="brand-lockup"><span class="brand-name">Aman Azmi</span><span class="brand-caption">YouTube creator</span></span></div>
+    </header>
 
-  <div class="fire-bg"></div>
-  <div class="container">
+    <main>
+        <section class="intro" aria-labelledby="pageTitle">
+            <div>
+                <p class="eyebrow">Aman Azmi · Community giveaway</p>
+                <h1 id="pageTitle">Aapka naam. Aapka chance.</h1>
+                <p class="intro-copy">Mere YouTube giveaway video par comment karein aur apna YouTube naam register karein. 1 November ko main teen winners announce karunga.</p>
+            </div>
+            <div class="drop-mark" aria-hidden="true"><span>✳</span></div>
+        </section>
 
-    <div class="header">
-      <h1>SURHAN eSPORTS</h1>
-      <div class="organizer">आयोजक: Aman Azmi</div>
-    </div>
+        <section class="giveaway" aria-label="November community giveaway">
+            <section class="giveaway-info" aria-labelledby="prizeHeading">
+                <p class="section-kicker">Aman Azmi giveaway · Total prizes ₹1,900</p>
+                <h2 id="prizeHeading">1 November ko draw</h2>
+                <p class="section-subtitle">Apna YouTube naam submit karein. Eligible entries mein se 3 winners randomly select kiye jayenge.</p>
+                <div class="countdown"><span class="countdown-label">Entry close · 1 Nov, 11:59 PM IST</span><span class="countdown-value" id="countdown" aria-live="off">Loading...</span></div>
+                <div class="prize-list" aria-label="Prize list">
+                    <div class="prize-row"><span class="prize-place">1st</span><span class="prize-name">First place<span class="prize-note">Top winner</span></span><span class="prize-amount">₹1,000</span></div>
+                    <div class="prize-row"><span class="prize-place">2nd</span><span class="prize-name">Second place<span class="prize-note">Runner-up</span></span><span class="prize-amount">₹500</span></div>
+                    <div class="prize-row"><span class="prize-place">3rd</span><span class="prize-name">Third place<span class="prize-note">Community pick</span></span><span class="prize-amount">₹400</span></div>
+                </div>
+                <ol class="giveaway-rules">
+                    <li>Giveaway video par comment karein aur wahi YouTube naam yahan likhein.</li>
+                    <li>Ek vyakti ki sirf ek entry; duplicate entries disqualify ho sakti hain.</li>
+                    <li>Main winners ko 1 November ko apne YouTube channel par announce karunga.</li>
+                </ol>
+            </section>
 
-    <div class="event-info">
-      <p>मोड: Classic Bermuda | 48 Players | सुरहन | 10 नवंबर 2025 | 12:00 PM</p>
-    </div>
+            <section class="entry-panel" aria-labelledby="entryHeading">
+                <div class="entry-head">
+                    <p class="section-kicker">Giveaway entry</p>
+                    <h2 id="entryHeading">Naam register karein</h2>
+                    <p>Comment mein dikhne wala YouTube channel naam hi daalein.</p>
+                </div>
+                <form class="entry-form" id="giveawayForm" action="https://formspree.io/f/xdeaybwk" method="POST">
+                    <label class="field-label" for="youtubeName">YouTube channel name</label>
+                    <input class="name-input" id="youtubeName" name="youtubeName" type="text" maxlength="50" minlength="2" autocomplete="nickname" placeholder="Jaise: CreatorName" required>
+                    <input type="hidden" name="_subject" value="New YouTube giveaway entry">
+                    <label class="attestation"><input id="commentConfirm" name="commentConfirmed" type="checkbox" value="Yes" required><span>Maine giveaway video par comment kiya hai, aur yeh mera sahi YouTube naam hai.</span></label>
+                    <button class="entry-button" id="entryButton" type="submit">Giveaway mein enter karein</button>
+                    <div class="entry-count"><span>Entry delivery</span><strong>Formspree</strong></div>
+                    <p class="entry-privacy">Successful submissions aapke Formspree account mein aayengi. Har browser par ek entry limit hai; multiple devices se entries ko rokne ke liye server-side identity check chahiye.</p>
+                    <div class="entry-success" id="entrySuccess" role="status" aria-live="polite"></div>
+                </form>
+            </section>
+        </section>
 
-    <div class="prize-pool">
-      प्राइज पूल: <span>₹2,400</span><br>
-      <small>हारा हुआ पैसा → विजेता को!</small>
-    </div>
+        <section aria-labelledby="codesHeading">
+            <div class="codes-heading"><div><h2 id="codesHeading">Daily redeem codes</h2><p>Giveaway se alag, daily code drop yahan available hai.</p></div><span class="codes-label">Bonus rewards</span></div>
 
-    <div class="winner-rule">
-      100% पैसे विजेता को!<br>हर प्लेयर से ₹50 → पूरा विजेता को!
-    </div>
+        <section class="milestone-lock" id="milestoneLock" aria-live="polite">
+            <div class="milestone-top"><h3 class="milestone-title">🔒 1,000 subscribers par daily codes unlock honge</h3><span class="milestone-count" id="subscriberCount">0 / 1,000</span></div>
+            <div class="milestone-track" role="progressbar" aria-label="Subscriber milestone progress" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0"><div class="milestone-fill" id="milestoneFill"></div></div>
+            <p class="milestone-copy" id="milestoneCopy">1,000 subscribers par redeem codes unlock honge.</p>
+        </section>
 
-    <div class="whatsapp-alert">
-      10 नवंबर को <i>ID + PASS</i> WhatsApp पर भेजा जाएगा!
-    </div>
+        <section class="stats" id="redeemStats" aria-label="Aaj ke code status" hidden>
+            <div class="stat"><span class="stat-label">Total codes</span><span class="stat-value" id="totalCount">0 <small>/ 10</small></span></div>
+            <div class="stat"><span class="stat-label">Claim ho chuke</span><span class="stat-value" id="claimedCount">0</span></div>
+            <div class="stat"><span class="stat-label">Available</span><span class="stat-value" id="availableCount">0</span></div>
+        </section>
+        <p class="status-line" id="redeemStatus" hidden><span class="status-dot" id="statusDot"></span><span id="statusText">Codes load ho rahe hain...</span></p>
 
-    <div class="countdown" id="countdown">
-      <div class="time-box"><span id="days">00</span><div class="time-label">दिन</div></div>
-      <div class="time-box"><span id="hours">00</span><div class="time-label">घंटे</div></div>
-      <div class="time-box"><span id="minutes">00</span><div class="time-label">मिनट</div></div>
-      <div class="time-box"><span id="seconds">00</span><div class="time-label">सेकंड</div></div>
-    </div>
+        <section class="workspace" id="redeemWorkspace" hidden>
+            <section class="panel" aria-labelledby="tasksHeading">
+                <div class="panel-head">
+                    <div><h2 id="tasksHeading">Claim karne ke tasks</h2><p>Teenon tasks complete karke claim unlock karein.</p></div>
+                    <span class="step-tag">STEP 01</span>
+                </div>
+                <div class="task-list">
+                    <label class="task-row"><input class="task-check" type="checkbox" data-task="subscribe"><span class="task-icon" aria-hidden="true">▶</span><span class="task-text"><span class="task-title">Channel subscribe karein</span><span class="task-hint">Hamare channel ko subscribe karein</span></span></label>
+                    <label class="task-row"><input class="task-check" type="checkbox" data-task="like"><span class="task-icon" aria-hidden="true">♥</span><span class="task-text"><span class="task-title">Latest video like karein</span><span class="task-hint">Video ko like karke support karein</span></span></label>
+                    <label class="task-row"><input class="task-check" type="checkbox" data-task="share"><span class="task-icon" aria-hidden="true">↗</span><span class="task-text"><span class="task-title">Doston ke saath share karein</span><span class="task-hint">Reward drop ko kisi dost tak pahunchayein</span></span></label>
+                </div>
+                <div class="claim-wrap">
+                    <button class="claim-button" id="claimButton" type="button" disabled>Tasks poore karein</button>
+                    <p class="claim-note">Tasks ki completion yahan self-confirm hoti hai; social actions automatically verify nahi hote.</p>
+                </div>
+            </section>
 
-    <div class="form-section">
-      <form id="registerForm">
-        <div class="form-group">
-          <label>पूरा नाम</label>
-          <input type="text" id="name" placeholder="enter your name" required />
-        </div>
-        <div class="form-group">
-          <label>मोबाइल नंबर (WhatsApp)</label>
-          <input type="tel" id="mobile" placeholder="10 अंकों का" pattern="[0-9]{10}" required />
-        </div>
-        <div class="form-group">
-          <label>इन-गेम नाम</label>
-          <input type="text" id="gameName" placeholder="FF NAME" required />
-        </div>
-        <div class="form-group">
-          <label>Free Fire UID</label>
-          <input type="text" id="uid" placeholder="123456789" required />
-        </div>
-      </form>
-    </div>
+            <section class="panel" aria-labelledby="rewardHeading">
+                <div class="panel-head">
+                    <div><h2 id="rewardHeading">Aapka reward</h2><p>Aapke claim kiye gaye codes yahan dikhte hain.</p></div>
+                    <span class="step-tag">STEP 02</span>
+                </div>
+                <div class="reward-content" id="rewardContent"><div class="reward-empty">Abhi tak koi code claim nahi hua. Tasks poore karke apna reward unlock karein.</div></div>
+            </section>
+        </section>
+        </section>
+    </main>
 
-    <!-- धाँसू बटन -->
-    <a href="#" id="payRegisterBtn" class="pay-register-btn">
-      Pay & Register (₹50)
-    </a>
+    <footer>Aman Azmi &nbsp;·&nbsp; YouTube community giveaway and daily rewards<br>Giveaway entries Formspree ko submit hoti hain. Redeem claims abhi browser-local hain.</footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <div class="footer">
-      <p>Surhan Esports | हारा हुआ पैसा → विजेता को!</p>
-    </div>
-  </div>
+    <script>
+        (() => {
+            // Apne daily codes yahan badlein; maximum 10. Agle din naye codes daal kar page update karein.
+            const DAILY_CODES = ["BWBWSHBWDWSWDWS", "2W2W2W2WW", "EDCXWSWSSSWSWSWS", "JGDEJKDDDDDWDSWHS", "DGHWDWGBDGDDGDBDD", "GWGDHWJGDDHSHSHSHSH", "HJWGDSYJWGWGSHJGSHSGHH", "WHGSDKWGSSGG", "JKEGDWDDDBDBDBD", "JKDGKDGEDEDGDD"];
+            const SUBSCRIBER_GOAL = 1000;
+            // Update this count when you confirm your channel subscriber milestone.
+            const CURRENT_SUBSCRIBERS = 567;
+            const CLAIM_KEY = "code-drop-claimed-v1";
+            const GIVEAWAY_KEY = "code-drop-formspree-submitted-2026-11";
+            const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdeaybwk";
+            const entryDeadline = new Date("2026-11-01T23:59:59.999+05:30");
+            const activeCodes = DAILY_CODES.map(code => code.trim()).filter(Boolean);
+            const checks = [...document.querySelectorAll(".task-check")];
+            const claimButton = document.getElementById("claimButton");
+            let savedClaim = readClaim();
+            let toastTimer;
 
-  <!-- UPI Modal -->
-  <div id="upiModal">
-    <h2 style="color:#4CAF50; font-size:28px; margin-bottom:15px;">₹50 भेजें</h2>
-    <img src="IMG_20251103_204227.jpg" alt="UPI QR">
-    <p style="font-size:18px; margin:10px;"><strong>UPI ID:</strong> <code>amanazmim2025@oksbi</code></p>
-    <input type="text" id="utr" placeholder="UTR / Transaction ID">
-    <button onclick="sendToWhatsApp()">WhatsApp पर भेजें</button>
-    <button onclick="document.getElementById('upiModal').style.display='none'">बंद करें</button>
-  </div>
+            function milestoneReached() {
+                return CURRENT_SUBSCRIBERS >= SUBSCRIBER_GOAL;
+            }
 
-  <script>
-    document.getElementById('payRegisterBtn').addEventListener('click', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const mobile = document.getElementById('mobile').value.trim();
-      const gameName = document.getElementById('gameName').value.trim();
-      const uid = document.getElementById('uid').value.trim();
+            function renderMilestone() {
+                const unlocked = milestoneReached();
+                const count = Math.max(0, Math.min(CURRENT_SUBSCRIBERS, SUBSCRIBER_GOAL));
+                const lock = document.getElementById("milestoneLock");
+                const progress = document.querySelector(".milestone-track");
+                document.getElementById("redeemStats").hidden = !unlocked;
+                document.getElementById("redeemWorkspace").hidden = !unlocked;
+                document.getElementById("redeemStatus").hidden = !unlocked;
+                lock.hidden = unlocked;
+                document.getElementById("subscriberCount").textContent = `${count.toLocaleString("en-US")} / ${SUBSCRIBER_GOAL.toLocaleString("en-US")}`;
+                document.getElementById("milestoneFill").style.width = `${(count / SUBSCRIBER_GOAL) * 100}%`;
+                progress.setAttribute("aria-valuenow", String(count));
+                document.getElementById("milestoneCopy").textContent = unlocked
+                    ? "Milestone complete. Daily redeem code claims are unlocked."
+                    : `${(SUBSCRIBER_GOAL - count).toLocaleString("en-US")} more subscribers until the codes unlock.`;
+                checks.forEach(check => { check.disabled = !unlocked || Boolean(savedClaim); });
+            }
 
-      if (!name || !mobile || !gameName || !uid || mobile.length !== 10) {
-        alert('सभी फील्ड सही से भरें!');
-        return;
-      }
-      document.getElementById('upiModal').style.display = 'flex';
-    });
+            function readClaim() {
+                try {
+                    const claim = JSON.parse(localStorage.getItem(CLAIM_KEY));
+                    return claim && typeof claim.code === "string" ? claim : null;
+                } catch {
+                    return null;
+                }
+            }
 
-    function sendToWhatsApp() {
-      const name = document.getElementById('name').value;
-      const mobile = document.getElementById('mobile').value;
-      const gameName = document.getElementById('gameName').value;
-      const uid = document.getElementById('uid').value;
-      const utr = document.getElementById('utr').value.trim();
+            function showToast(message) {
+                const toast = document.getElementById("toast");
+                toast.textContent = message;
+                toast.classList.add("show");
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
+            }
 
-      if (!utr) { alert('UTR डालें!'); return; }
+            function readEntries() {
+                try {
+                    const entries = JSON.parse(localStorage.getItem(GIVEAWAY_KEY));
+                    return Array.isArray(entries) ? entries.filter(entry => entry && typeof entry.name === "string") : [];
+                } catch {
+                    return [];
+                }
+            }
 
-      const message = `*नया रजिस्ट्रेशन + पेमेंट*%0A%0A` +
-        `नाम: ${name}%0A` +
-        `मोबाइल: ${mobile}%0A` +
-        `गेम नाम: ${gameName}%0A` +
-        `UID: ${uid}%0A` +
-        `UTR: ${utr}%0A%0A` +
-        `_10 नवंबर को ID/Pass भेजें_`;
+            function renderGiveaway() {
+                const entries = readEntries();
+                const ownEntry = entries[0];
+                const count = document.getElementById("entryCount");
+                const success = document.getElementById("entrySuccess");
+                const nameInput = document.getElementById("youtubeName");
+                const commentConfirm = document.getElementById("commentConfirm");
+                const entryButton = document.getElementById("entryButton");
+                success.replaceChildren();
+                success.classList.toggle("show", Boolean(ownEntry));
+                if (ownEntry) {
+                    const heading = document.createElement("strong");
+                    heading.textContent = "Entry successful!";
+                    success.append(heading, document.createTextNode(`YouTube naam: ${ownEntry.name}`));
+                }
+                const closed = Date.now() > entryDeadline.getTime();
+                nameInput.disabled = Boolean(ownEntry) || closed;
+                commentConfirm.disabled = Boolean(ownEntry) || closed;
+                entryButton.disabled = Boolean(ownEntry) || closed;
+                entryButton.textContent = ownEntry ? "Entry submit ho chuki hai" : closed ? "Giveaway band ho gaya" : "Giveaway mein enter karein";
+            }
 
-      window.open(`https://wa.me/917860959062?text=${message}`, '_blank');
-      alert('सब डेटा WhatsApp पर भेज दिया गया!');
-      document.getElementById('upiModal').style.display = 'none';
-      document.getElementById('utr').value = '';
-    }
+            function updateCountdown() {
+                const remaining = entryDeadline.getTime() - Date.now();
+                const output = document.getElementById("countdown");
+                if (remaining <= 0) {
+                    output.textContent = "Giveaway closed";
+                    renderGiveaway();
+                    return;
+                }
+                const days = Math.floor(remaining / 86400000);
+                const hours = Math.floor((remaining % 86400000) / 3600000);
+                const minutes = Math.floor((remaining % 3600000) / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                output.textContent = `${days}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+            }
 
-    // Countdown
-    const eventDate = new Date("2025-11-10T12:00:00").getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-      if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<div style='color:#ff1744; font-weight:700; font-size:20px;'>मैच शुरू!</div>";
-        return;
-      }
-      const days = Math.floor(distance / (1000*60*60*24));
-      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-      const seconds = Math.floor((distance % (1000*60)) / 1000);
-      document.getElementById("days").innerText = days.toString().padStart(2, '0');
-      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-    }, 1000);
-  </script>
+            function render() {
+                renderMilestone();
+                const claimedHere = savedClaim ? 1 : 0;
+                const availableHere = Math.max(0, activeCodes.length - claimedHere);
+                const complete = checks.every(check => check.checked);
+                document.getElementById("totalCount").innerHTML = `${activeCodes.length} <small>/ 10</small>`;
+                document.getElementById("claimedCount").textContent = claimedHere;
+                document.getElementById("availableCount").textContent = availableHere;
+                document.getElementById("statusDot").classList.toggle("empty", activeCodes.length === 0 || Boolean(savedClaim));
+                document.getElementById("statusText").textContent = activeCodes.length === 0 ? "Codes abhi add nahi kiye gaye hain." : savedClaim ? "Is browser se pehle hi ek code claim ho chuka hai." : `${activeCodes.length} code${activeCodes.length === 1 ? "" : "s"} configured hain. Live shared count ke liye server chahiye.`;
+                document.querySelector(".stats .stat:nth-child(2) .stat-label").textContent = "Claimed here";
+                document.querySelector(".stats .stat:nth-child(3) .stat-label").textContent = "Available here";
+                claimButton.disabled = !milestoneReached() || !complete || !activeCodes.length || Boolean(savedClaim);
+                claimButton.textContent = !milestoneReached() ? "1,000 subscribers par unlock hoga" : savedClaim ? "Aap ek code claim kar chuke hain" : activeCodes.length === 0 ? "Codes available nahi hain" : complete ? "Mera redeem code claim karein" : "Tasks poore karein";
+
+                const rewardRoot = document.getElementById("rewardContent");
+                if (!savedClaim) {
+                    rewardRoot.innerHTML = '<div class="reward-empty">Abhi tak koi code claim nahi hua. Tasks poore karke apna reward unlock karein.</div>';
+                    return;
+                }
+                rewardRoot.innerHTML = '<div class="code-ticket"><code class="code-value"></code><button class="copy-button" type="button">Copy code</button></div><p class="claim-note">Claim isi browser mein save hai. Browser data clear karne ya device badalne se ye limit reset ho sakti hai.</p>';
+                rewardRoot.querySelector(".code-value").textContent = savedClaim.code;
+                rewardRoot.querySelector(".copy-button").addEventListener("click", async () => {
+                    try {
+                        await navigator.clipboard.writeText(savedClaim.code);
+                        showToast("Code clipboard par copy ho gaya.");
+                    } catch {
+                        showToast("Code select karke copy karein.");
+                    }
+                });
+            }
+
+            checks.forEach(check => check.addEventListener("change", render));
+
+            document.getElementById("giveawayForm").addEventListener("submit", async event => {
+                event.preventDefault();
+                const form = event.currentTarget;
+                const nameInput = document.getElementById("youtubeName");
+                const name = nameInput.value.trim().replace(/\s+/g, " ");
+                const entries = readEntries();
+                if (Date.now() > entryDeadline.getTime()) {
+                    showToast("Giveaway entries band ho chuki hain.");
+                    renderGiveaway();
+                    return;
+                }
+                if (!nameInput.reportValidity()) return;
+                if (entries.some(entry => entry.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
+                    showToast("Is browser mein yeh naam pehle se submit hai.");
+                    return;
+                }
+                const entryButton = document.getElementById("entryButton");
+                entryButton.disabled = true;
+                entryButton.textContent = "Submit ho raha hai...";
+                try {
+                    const response = await fetch(FORMSPREE_ENDPOINT, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json", Accept: "application/json" },
+                        body: JSON.stringify({
+                            youtubeName: name,
+                            commentConfirmed: "Yes",
+                            _subject: `Aman Azmi Giveaway Entry: ${name}`
+                        })
+                    });
+                    if (!response.ok) {
+                        let message = "Form submit nahi hua. Thodi der baad phir try karein.";
+                        try {
+                            const result = await response.json();
+                            if (Array.isArray(result.errors) && result.errors.length) message = result.errors.map(error => error.message).join(" ");
+                        } catch {}
+                        throw new Error(message);
+                    }
+                    entries.push({ name, submittedAt: new Date().toISOString() });
+                    localStorage.setItem(GIVEAWAY_KEY, JSON.stringify(entries));
+                    renderGiveaway();
+                    showToast("Entry successfully Formspree ko submit ho gayi.");
+                } catch (error) {
+                    entryButton.disabled = false;
+                    entryButton.textContent = "Dobara submit karein";
+                    showToast(error instanceof TypeError ? "Network/CORS error. Formspree endpoint aur form activation check karein." : error.message);
+                }
+            });
+
+            claimButton.addEventListener("click", () => {
+                if (!milestoneReached() || !checks.every(check => check.checked) || !activeCodes.length || savedClaim) return;
+                const randomIndex = Math.floor(Math.random() * activeCodes.length);
+                savedClaim = { code: activeCodes[randomIndex], claimedAt: new Date().toISOString() };
+                localStorage.setItem(CLAIM_KEY, JSON.stringify(savedClaim));
+                checks.forEach(check => { check.checked = false; });
+                render();
+                showToast("Aapka redeem code unlock ho gaya!");
+            });
+
+            render();
+            renderGiveaway();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+    </script>
 </body>
 </html>
